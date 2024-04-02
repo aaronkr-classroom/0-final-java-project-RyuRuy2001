@@ -1,11 +1,13 @@
 import java.util.Scanner;
 
 public class Welcome {
-	static final int Num_Book = 3;
-	static final int Num_ITEM = 7;
+	static final int NUM_BOOK = 3;
+	static final int NUM_ITEM = 7;
+	static CartItem[] mCartItem = new CartItem[NUM_BOOK];
+	static int mCartCount = 0;
 
 	public static void main(String[] args) {
-		String[][] mBook = new String[Num_Book][ Num_ITEM];
+		String[][] mBook = new String[NUM_BOOK][NUM_ITEM];
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("당신의 이름을 입력하세요: ");
@@ -22,6 +24,8 @@ public class Welcome {
 		System.out.println("\t" + tagline);
 		System.out.println("**********************************");
 		
+		
+	
 		/*
 		System.out.println("**********************************");
 		System.out.println("1. 고객 정보 확인하기\t5. 장바구니에 항목 추가하기");
@@ -88,6 +92,15 @@ public static void menuGuestInfo(String name, int phone) {
 }
 public static void menuCartltemList() {
 	System.out.println("2. 장바구니 상품 목록보기");
+	System.out.println("-----------------");
+	System.out.println("   도서ID \t|   수량\t|     합계");
+	for (int i = 0; i < mCartCount; i++) {
+		System.out.print("     " + mCartItem[i].getBookID() + "\t| ");
+		System.out.print("     " + mCartItem[i].getQuantity() + "\t| ");
+		System.out.print("     " + mCartItem[i].getTotalPrice());
+		System.out.println(" ");
+	}
+	System.out.println("-----------------");
 }
 public static void menuCartClear() {
 	System.out.println("3. 장바구니 비우기");
@@ -96,8 +109,8 @@ public static void menuCartAddItem(String[][] book) {
 	System.out.println("4. 장바구니 항목 추가하기");
 
 	BookList(book);
-	for(int i = 0; i < Num_Book; i++) {
-	for(int j = 0; j < Num_ITEM; j++)
+	for(int i = 0; i < NUM_BOOK; i++) {
+	for(int j = 0; j < NUM_ITEM; j++)
 		System.out.print(book[i][j] + "|");
 	System.out.println("");
 	}
@@ -113,7 +126,7 @@ public static void menuCartAddItem(String[][] book) {
 	boolean flag = false;
 	int numId = -1;
 	
-	for (int i = 0; i < Num_Book; i++) {
+	for (int i = 0; i < NUM_BOOK; i++) {
 		if(str.equals(book[i][0])) {
 			numId = i;
 			flag = true;
@@ -176,5 +189,16 @@ public static void BookList(String[][] book) {
 	book[2][4] = "컴퓨터 사고룍울 키우는 블록코딩";
 	book[2][5] = "컴퓨터 입문";	
 	book[2][6] = "2019/06/10";	
+}
+
+public static boolean isCartInBook(String bookId) {
+	boolean flag = false;
+	for (int i = 0; i < mCartCount; i++) {
+		if(bookId == mCartItem[i].getBookID()) {
+			mCartItem[i].setQuantity(mCartItem[i].getQuantity()+1);
+			flag = true;
+		}
+	}
+	return flag;
 }
 }
