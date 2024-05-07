@@ -1,3 +1,5 @@
+import com.market.bookitem.Book;
+
 public class CartItem {
 
 	//private String [] itemBook = new String[7];
