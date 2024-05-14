@@ -1,7 +1,7 @@
 package com.market.cart;
 import com.market.bookitem.Book;
 
-public abstract class Cart implements CartInterface{
+public class Cart implements CartInterface{
 	
 	static final int NUM_BOOK = 3;
 	public CartItem[] mCartItem = new CartItem[NUM_BOOK];
