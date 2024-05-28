@@ -75,4 +75,12 @@ public class Cart implements CartInterface{
 		mCartCount = num;
 		mCartItem = cartItem; */
     } 
+	
+	public ArrayList<CartItem> getmCartItem() {
+		return mCartItem;
+	}
+	
+	public void setCartItem(ArrayList<CartItem> mCartItem) {
+		this.mCartItem = mCartItem;
+	}
 } 
