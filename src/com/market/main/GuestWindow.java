@@ -1,4 +1,4 @@
-package com.market.cart;
+package com.market.main;
 
 import javax.swing.*;
 import java.awt.*;
